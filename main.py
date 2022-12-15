@@ -21,7 +21,14 @@ print(res_json_post)
 
 # Chaing user-agent - using headers (Default user agent is python requests)
 headers = {
-    'User-Agent' : 'Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36'
+    'User-Agent' : 'Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36',
+    'Accept' : 'image/png',
 }
 res = requests.get('https://httpbin.org/user-agent', headers=headers)
 print(res.text)
+
+# Getting images
+res_img = requests.get('https://httpbin.org/image', headers=headers)
+with open('myimage.png', 'wb') as f:
+    f.write(res_img.content)
+    
