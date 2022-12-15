@@ -32,3 +32,11 @@ res_img = requests.get('https://httpbin.org/image', headers=headers)
 with open('myimage.png', 'wb') as f:
     f.write(res_img.content)
     
+    
+# Proxies and rotating IPs
+proxies = {
+    'http' : '139.99.237.62:80',
+    'https' : '139.99.237.62:80',
+}
+res_prox = requests.get('http://httpbin.org/get', proxies=proxies)
+print(res_prox.text)
